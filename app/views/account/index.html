@@ -12,25 +12,40 @@
 	set your email address.
 </div>	
 #{/if}
-<div class="row">
-	<div class="span3">
-		<ul class="nav nav-tabs nav-stacked" style="margin-top: 50px;">
-			<li #{if (active == "plans")}class="active"#{/if}>
-				<a href="@{Account.plans}">Plans<i class="icon-chevron-right float-end"></i></a>
+<div class="d-flex flex-nowrap">
+	<div class="d-flex flex-column flex-shrink-0 p-3">
+		<ul class="nav nav-pills flex-column mb-auto" style="margin-top: 50px;">
+			<li class="nav-item">
+				<a class="nav-link border-bottom #{if (active == 'plans')}active#{/if}" href="@{Account.plans}">
+					Plans
+					<i class="carousel-control-next-icon float-end"></i>
+				</a>
 			</li>
-			<li #{if (active == "invoices")}class="active"#{/if}>
-				<a href="@{Account.invoices}">Invoices<i class="icon-chevron-right float-end"></i></a>
+			<li  class="nav-item" >
+				<a class="nav-link border-bottom #{if (active == 'invoices')}active#{/if}	" href="@{Account.invoices}">
+					Invoices
+					<i class="carousel-control-next-icon float-end"></i>
+				</a>
 			</li>
-			<li #{if (active == "details")}class="active"#{/if}>
-				<a href="@{Account.details}">Account Details<i class="icon-chevron-right float-end"></i></a>
+			<li  class="nav-item" >
+				<a class="nav-link border-bottom #{if (active == 'details')}active#{/if}" href="@{Account.details}">
+					Account Details
+					<i class="carousel-control-next-icon float-end"></i>
+				</a>
 			</li>
-			<li #{if (active == "settings")}class="active"#{/if}>
-				<a href="@{Account.settings}">Settings<i class="icon-chevron-right float-end"></i></a>
+			<li class="nav-item" >
+				<a class="nav-link border-bottom #{if (active == 'settings')}active#{/if}" href="@{Account.settings}">
+					Settings
+					<i class="carousel-control-next-icon float-end"></i>
+				</a>
 			</li>
-			<li #{if (active == "api")}class="active"#{/if}>
-				<a href="@{Account.api}">API<i class="icon-chevron-right float-end"></i></a>
+			<li class="nav-item" >
+				<a class="nav-link border-bottom #{if (active == 'api')}active#{/if}" href="@{Account.api}">
+					API
+					<i class="carousel-control-next-icon float-end"></i>
+				</a>
 			</li>	
 		</ul>		
 	</div>
-	<div class="span9">#{doLayout /}</div>
+	<div class="d-flex flex-column">#{doLayout /}</div>
 </div>
