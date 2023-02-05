@@ -21,7 +21,7 @@
 		<div id="${plan.name}" class="well plan #{if isCurrentPlan}alert-info#{/if}">
 			<div>
 				<h2>${plan.name}
-					<div class="pull-right">
+					<div class="float-end">
 					#{if (plan.freeSlots > 0)}
 						#{if (isCurrentPlan)}
 							<span class="btn btn-success">Current Plan</span>
@@ -55,7 +55,7 @@
 				</ul>
 			</p>
 			<div class="form-actions">
-				<div class="pull-left" style="font-size:200%;">
+				<div class="float-start" style="font-size:200%;">
 					<strong>$${plan.monthlyCost}</strong> / mo<br />
 				</div>			
 			</div>			

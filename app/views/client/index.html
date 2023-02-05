@@ -25,7 +25,7 @@
 </script>
 <div class="row">
 	<div class="span10 offset2">
-		<span class="pull-left">
+		<span class="float-start">
 		#{if currentGroup == "Ungrouped" && groups.size() == 1}
 			<h3>All torrents</h3>
 		#{/if}
@@ -34,7 +34,7 @@
 		#{/else}
 		</span>
 		#{if currentUser.admin}		
-		<form class="pull-right form-inline"action="@{Client.switchUser}" method="post">
+		<form class="float-end form-inline"action="@{Client.switchUser}" method="post">
 			#{form.dropdown name:"user_id", label:"", options:users, value:currentUser.id, raw:true /}
 			<input class="btn btn-primary btn-small" type="submit" value="Switch" />
 		</form>
@@ -55,7 +55,7 @@
 							${group.length() > 15 ? group.substring(0, 15) : group}
 						#{/else}
 						#{if group != "Ungrouped"}
-							<i class="icon-minus pull-right hide remove-group" data-group-name="${group}" rel="tooltip" title="Remove"></i>
+							<i class="icon-minus float-end hide remove-group" data-group-name="${group}" rel="tooltip" title="Remove"></i>
 						#{/if}													
 					</a>
 				</li>
@@ -65,12 +65,12 @@
 		</ul>
 	</div>
 	<div class="span10">			
-			<input id="select-all" type="checkbox" style="margin-right: 25px; margin-left: 10px; margin-top: 8px;" class="pull-left"/>
+			<input id="select-all" type="checkbox" style="margin-right: 25px; margin-left: 10px; margin-top: 8px;" class="float-start"/>
 			<form id="with-selected-form" action="@{Client.action}" method="post" style="margin:0px;">
 				<input type="hidden" name="what" value="" />
 				<input type="hidden" name="hashes" value="" />
 			</form>
-			<div class="btn-group pull-left">
+			<div class="btn-group float-start">
 				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">With Selected <span class="caret"></span></a>
 				<ul id="with-selected-dropdown" class="dropdown-menu">
 					<li><a href="#" data-what="start">Start</a></li>
@@ -83,7 +83,7 @@
 					#{/if}
 				</ul>
 			</div>
-			<div class="btn-group pull-right">
+			<div class="btn-group float-end">
 				<a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
 					<i class="icon-plus-sign"></i>Add Torrent
 					<span class="caret"></span>

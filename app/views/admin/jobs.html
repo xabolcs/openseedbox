@@ -22,7 +22,7 @@
 				#{else}
 					<pre class="text-error" style="margin-bottom:0px;">${job.stackTrace?.trimTo(60)}</pre>
 					#{if job.stackTrace?.length() > 60}
-					<a href="#" style="font-size: 70%" class="pull-right show-stack-trace">Show all</a>
+					<a href="#" style="font-size: 70%" class="float-end show-stack-trace">Show all</a>
 					#{/if}
 				#{/else}
 			</td>
@@ -31,7 +31,7 @@
 			<tr class="hide full-stack-trace">
 				<td colspan="4">
 					<pre class="text-error">${job.stackTrace}</pre>
-					<a href="#" style="font-size: 70%" class="pull-right hide-stack-trace">Show less</a>
+					<a href="#" style="font-size: 70%" class="float-end hide-stack-trace">Show less</a>
 				</td>
 			</tr>
 			#{/if}	
@@ -61,7 +61,7 @@
 	}
 }
 %}
-<span class="pull-right">Time: ${new Date()}</span>
+<span class="float-end">Time: ${new Date()}</span>
 %{renderHeaderWithToc(jobNames, jobs) %}
 <script type="text/javascript">
 	$(document).ready(function() {

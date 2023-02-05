@@ -2,7 +2,7 @@
 #{set "moreScripts"}
 	<script type="text/javascript" src="https://www.paypalobjects.com/js/external/dg.js"></script>
 #{/set}
-<h2>Details for invoice #${invoice.id} <small class="pull-right">Created On: ${invoice.invoiceDate}</small></h2>
+<h2>Details for invoice #${invoice.id} <small class="float-end">Created On: ${invoice.invoiceDate}</small></h2>
 <h4>Payable By: ${invoice.user.emailAddress}</h4>
 <h3>Items:</h3>
 <table class="table table-condensed">
@@ -17,12 +17,12 @@
 		<td>${item_index}</td>
 		<td>${item.name}</td>
 		<td>${item.description}</td>
-		<td><div class="pull-right">$${item.price}</div></td>
+		<td><div class="float-end">$${item.price}</div></td>
 	</tr>
 	#{/list}
 </table>
-<div class="pull-right">
-	<h4 class="pull-right">Total Cost: $${invoice.getTotalAmount()}</h4><br />
+<div class="float-end">
+	<h4 class="float-end">Total Cost: $${invoice.getTotalAmount()}</h4><br />
 	#{if (!invoice.hasBeenPaid())}
 		#{pay-invoice invoice /}
 	#{/if}

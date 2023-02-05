@@ -19,12 +19,12 @@
 			<table class="no-table torrent-info" style="width:100%;">
 				<tr>
 					<td colspan="4">
-						<h5 class="torrent-title pull-left">
+						<h5 class="torrent-title float-start">
 							${t.name.trimTo(45)} (${item.niceTotalSize})
 							<small>- ${item.niceStatus} ${item.niceSubStatus}</small>							
 						</h5>	
 						#{if (t.complete)}
-						<h5 class="torrent-speed pull-right">
+						<h5 class="torrent-speed float-end">
 							<small>
 								[ <a class="download-button" data-torrent-hash="${t.torrentHash}" href="#">Download</a> ]
 								#{if com.openseedbox.Config.zipEnabled}
@@ -35,7 +35,7 @@
 						</h5>					
 						#{/if}
 						#{elseif (t.running)}
-						<h5 class="torrent-progress pull-right hide">
+						<h5 class="torrent-progress float-end hide">
 							<small>${Util.getBestRate(t.downloadSpeedBytes)}/s down, ${Util.getBestRate(t.uploadSpeedBytes)}/s up</small>
 						</h5>
 						#{/elseif}
@@ -71,10 +71,10 @@
 						</div>											
 					</td>
 					<td style="width:15%;">
-						<form action="@{Client.action}" method="post" class="no-margin pull-left">
+						<form action="@{Client.action}" method="post" class="no-margin float-start">
 							<input type="hidden" name="hash" value="${t.torrentHash}" />
 							<input type="hidden" name="group" value="${currentGroup}" />
-							<div class="btn-group pull-right">							
+							<div class="btn-group float-end">
 								<a class="btn btn-mini show-torrent-info" data-torrent-hash="${t.torrentHash}" href="#"><i class="icon-info-sign"></i></a>
 								#{if item.running}
 									<button type="submit" class="btn btn-mini" name="what" value="stop"><i class="icon-pause"></i></button>
@@ -93,10 +93,10 @@
 	#{/list}	
 	<tr>
 		<td>
-			<div class="pull-left">
+			<div class="float-start">
 				${torrentQueue()}
 			</div>
-			<div class="pull-right">
+			<div class="float-end">
 				%{	def stats = currentUser.userStats }%
 				<h5><small>Available: ${stats.availableSpaceGb}, Used: ${stats.usedSpaceGb} ${stats.percentUsed}, Down: ${stats.totalDownloadRate}/s, Up: ${stats.totalUploadRate}/s</small></h5>
 			</div>

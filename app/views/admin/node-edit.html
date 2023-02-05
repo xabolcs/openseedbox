@@ -19,7 +19,7 @@
 		#{form.textarea name:"node.certificatesToTrust", value:node?.certificatesToTrust, label:"Certificates To Trust", css_class: "span8", help: "e.g. self signed certificate" /}
 		#{form.checkbox name:"node.active", value:node?.active, label:"Active" /}
 		<div class="form-actions"> 
-			<a class="btn btn-danger pull-right" href="@{Admin.nodes()}">Cancel</a>
+			<a class="btn btn-danger float-end" href="@{Admin.nodes()}">Cancel</a>
 			#{if !node}
 				<input class="btn btn-primary" type="submit" value="Create new Node" />
 			#{/if}
