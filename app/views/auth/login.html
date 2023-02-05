@@ -2,30 +2,69 @@
 #{set title: "Login" /}
 #{set "moreStyles"}
 <style type="text/css">
-	.oauth-images img {
-		margin-right: 20px;
-	}
+    .social-icon i{
+        transition: 0.4s all;
+    }
+    .social-icon:hover i{
+        transform: scale(1.4);
+    }
 </style>
+    #{stylesheet 'fontawesome.min.css' /}
+    #{stylesheet 'brands.min.css' /}
+    #{stylesheet 'solid.min.css' /}
 #{/set}
 <br />
-<div>
-    <h2>Login to OpenSeedbox</h2>
-    <br />
-    <p>You can login using OpenID below.</p>
-    <br />
-    <div class="signin">
-        <span id="signinButton">
-            <span
-              class="g-signin2"
-              data-onsuccess="onSignIn"
-              data-onfailure="onSignInFailure"
-              data-clientid="${clientId}"
-              data-cookiepolicy="single_host_origin"
-              data-scope="openid email profile">
-            </span>
-        </span>
+<section>
+    <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+            <img src="#{asset.url '/images/bootstrap-login-form-draw2-unlock.svg' /}"
+                 class="img-fluid" alt="Phone image">
+        </div>
+        <div class=" col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+            <h2 class="modal-title text-center" style="margin-bottom: 2rem">Login to OpenSeedbox</h2>
+            <form class="d-grid gap-2">
+                #{if !google}
+                <a  href="#" role="button"
+                        id="signinButton"
+                        data-onsuccess="onSignIn"
+                        data-onfailure="onSignInFailure"
+                        data-clientid="${clientId}"
+                        data-cookiepolicy="single_host_origin"
+                        data-scope="openid email profile"
+                        class="btn g-signin2"
+                >
+                    <i class="fab fa-google mr-2"></i>
+                    Sign in with google sign-in
+                </a>
+                #{/if}
+                #{if (google)}
+                <a  role="button" class="btn btn-lg btn-primary shadow border-0 social-icon"
+                    style="background-color: #dd4b39;"
+                    href="@{AuthGoogle.authenticate()}">
+                    <i class="fab fa-google me-2"></i>
+                    Continue with Google
+                </a>
+                #{/if}
+                #{if (keyCloak)}
+                <a  role="button" class="btn btn-lg btn-primary shadow border-0 social-icon"
+                    style="background-color: #0dafd5"
+                    href="@{AuthKeyCloak.authenticate()}">
+                    <i class="fa fa-key me-2"></i>
+                    Continue with Keycloak
+                </a>
+                #{/if}
+                #{if (gitHub)}
+                <a  role="button" class="btn btn-lg btn-primary shadow border-0 social-icon"
+                    style="background-color: #444444"
+                    href="@{AuthGitHub.authenticate()}">
+                    <i class="fab fa-github me-2"></i>
+                    Continue with GitHub
+                </a>
+                #{/if}
+            </form>
+        </div>
     </div>
-</div>
+</section>
 <script type="text/javascript">
     var signinClicked = false;
     function onSignIn(googleUser) {
