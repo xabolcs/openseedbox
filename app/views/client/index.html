@@ -243,9 +243,17 @@ a.download-link, a.download-link:hover {
 	margin-bottom: 0px;
 }
 
-#torrent-info-modal, #torrent-download-modal {
-	width: 800px;
-	margin-left: -370px;
+/*
+".modal-lg" imported from Bootstrap 3
+
+See: https://getbootstrap.com/docs/3.4/javascript/#modals
+and: https://stackoverflow.com/questions/25859255/trying-to-make-bootstrap-modal-wider
+ */
+@media (min-width: 992px) {
+	.modal-lg {
+		width: 900px;
+		margin-left: -450px;
+	}
 }
 </style>
 <script type="text/javascript">
