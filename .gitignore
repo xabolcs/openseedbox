@@ -2,7 +2,7 @@ tmp/
 nbproject/
 logs/
 eclipse/
-modules/
+/modules/
 lib/
 precompiled/
 server.pid
