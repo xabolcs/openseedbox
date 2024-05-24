@@ -191,7 +191,7 @@ public class SienaFixtures {
 					if (matcher.matches()) {
 						String type = matcher.group(1);
 						String id = matcher.group(2);
-						if (!type.startsWith("models.")) {
+						if (type.substring(0,1).toUpperCase().equals(type.substring(0, 1))) {
 							type = "models." + type;
 						}
 						if (idCache.containsKey(type + "-" + id)) {
