@@ -1,0 +1,97 @@
+# %{ String firstTH = 'bbb3557b8cbb271aeb71669b575ebddb7562c004' }%
+# %{ String seedingTH = 'ce3c2d8763e1d34f41e3f8a45f483991d4813dde' }%
+# %{ String firstTG = 'just for test' }%
+# %{ def idCounter = 1 }%
+# %{ def Config = com.openseedbox.Config }%
+
+
+com.openseedbox.models.Node(node1):
+  id: ${idCounter++}
+  name: node 1
+  ipAddress: localhost:12345
+  scheme: ${Config.getNodeAccessType()}
+  active: false
+
+com.openseedbox.models.Node(mockNode):
+  id: ${idCounter++}
+  name: mock node
+  ipAddress: localhost:${play.configuration.getProperty('http.port')}/mockbackend
+  scheme: ${Config.getNodeAccessType()}
+  active: false
+
+com.openseedbox.models.Torrent(firstTorrent):
+  id: ${idCounter++}
+  hashString: ${firstTH} # setter name!
+  name: Torrent with Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+  metadataPercentComplete: 1
+  percentComplete: .1234
+  downloadSpeedBytes: 32451145
+  downloadedBytes: 79689514061
+  uploadSpeedBytes: 235156154
+  uploadedBytes: 3519235342
+  totalSizeBytes: 645782123674
+  status: DOWNLOADING # setter name!
+  createDate: 2024-05-21 13:02:52.259
+  node: mockNode
+
+com.openseedbox.models.Torrent(seedingTorrent):
+  id: ${idCounter++}
+  hashString: ${seedingTH}
+  name: Seeding torrent
+  metadataPercentComplete: 1
+  percentComplete: 1
+  downloadSpeedBytes: 0
+  downloadedBytes: 123456789
+  uploadSpeedBytes: 78134256
+  uploadedBytes: 3519235342
+  totalSizeBytes: 123456789
+  status: SEEDING
+  createDate: 2024-05-21 13:02:52.259
+  node: node1
+
+com.openseedbox.models.Plan(freeUnlimitedPlan):
+  id: ${idCounter++}
+  name: free and unlimited
+  maxDiskspaceGb: -1
+  maxActiveTorrents: -1
+  monthlyCost: 0
+  visible: true
+  totalSlots: 1
+
+com.openseedbox.models.Plan(freePlan):
+  id: ${idCounter++}
+  name: free
+  maxDiskspaceGb: 10
+  maxActiveTorrents: 3
+  monthlyCost: 0
+  visible: true
+  totalSlots: 1
+
+com.openseedbox.models.User(admin):
+  id: ${idCounter++}
+  emailAddress: ${Config.getErrorEmailAddress()}
+  dedicatedNode: mockNode
+  admin: true
+  plan: freeUnlimitedPlan
+  avatarUrl: https://gravatar.com/avatar/${org.apache.commons.codec.digest.DigestUtils.sha256Hex(Config.getErrorEmailAddress().toLowerCase())}?d=identicon
+  displayName: super admin <3
+  groups:
+  - ${firstTG}
+
+
+com.openseedbox.models.UserTorrent(U1):
+  id: ${idCounter++}
+  groupName: ${firstTG}
+  user: admin
+  torrentHash: ${seedingTH}
+  paused: false
+  running: true
+
+
+com.openseedbox.models.UserTorrent(U2):
+  id: ${idCounter++}
+  groupName: ${firstTG}
+  user: admin
+  torrentHash: ${firstTH}
+  paused: false
+  running: true
