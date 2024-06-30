@@ -1,4 +1,15 @@
 /*
+".text-break" imported from Bootstrap 4
+
+See: https://getbootstrap.com/docs/4.6/utilities/text/#word-break
+*/
+.text-break {
+  word-break: break-word !important;
+  word-wrap: break-word !important;
+}
+
+
+/*
   Placeholder, imported from Bootstrap 5.3
   See: https://getbootstrap.com/docs/5.3/components/placeholders/
 */
